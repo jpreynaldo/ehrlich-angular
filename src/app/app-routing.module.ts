@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, mapToCanActivate } from '@angular/router';
-import { AuthGuard } from './core/auth.guard';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
     { 
-        path: 'public', 
+        path: '', 
         loadChildren: () => 
             import('./module/public/public.module').then(m => m.PublicModule),
         canActivate: [AuthGuard]
@@ -14,7 +14,7 @@ const routes: Routes = [
         loadChildren: () => 
             import('./module/home-layout/home-layout.module').then(m => m.HomeLayoutModule),
     },
-    { path: '', redirectTo: 'public', pathMatch: 'full' },
+    { path: '', redirectTo: '', pathMatch: 'full' },
     { path: '**', redirectTo: 'home' }
 
 ];

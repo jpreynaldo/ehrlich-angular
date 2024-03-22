@@ -1,1 +1,15 @@
-<p>home-layout works!</p>
+<div *ngIf="!weatherData">
+    <app-home 
+        *ngIf="auth.user$ | async as user"
+        [user]="user"
+        [isError]="isWeatherError"
+        (city)="getWeather($event)"
+    ></app-home>
+</div>
+
+
+<app-weather
+    *ngIf="weatherData"
+    [weather]="weatherData"
+    (onBack)="goBack($event)"
+></app-weather>

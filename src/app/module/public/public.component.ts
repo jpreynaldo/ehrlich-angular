@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
-import { AuthorizationService } from '../../shared/services/authorization.service';
+import { AuthorizationService } from '../../core/services/authorization.service';
 
 @Component({
   selector: 'app-public',

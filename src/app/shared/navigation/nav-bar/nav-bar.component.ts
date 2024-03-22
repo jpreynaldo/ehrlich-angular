@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { AuthorizationService } from '../../services/authorization.service';
+import { AuthorizationService } from '../../../core/services/authorization.service';
 
 @Component({
   selector: 'app-nav-bar',

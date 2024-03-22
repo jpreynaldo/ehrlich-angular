@@ -19,7 +19,14 @@ export class AuthorizationService {
    */
   initializeAuth() {
     this._auth.isAuthenticated$.subscribe(isAuth => {
-      this._isAuthenticate.next(isAuth)
+      this._isAuthenticate.next(isAuth);
+      if (isAuth === true) {
+        if (!localStorage.getItem('accessToken'))
+          this.getAccessToken()
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['/home']);
+        });
+      }
     });
   }
   /**
@@ -46,5 +53,13 @@ export class AuthorizationService {
       }
     });
     localStorage.clear();
+  }
+
+  getAccessToken() {
+    this._auth.getAccessTokenSilently().subscribe({
+      next: (res) => {
+        localStorage.setItem('accessToken', res);
+      }
+    })
   }
 }
