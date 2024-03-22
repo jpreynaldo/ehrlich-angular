@@ -7,3 +7,8 @@ How to use the web app on your local
 4. From the terminal, you need to run the "npm i" code since all library that I used on this app is from the web pack and need to be installed
 5. After that, on the same terminal, hit the "npm start" code and wait a moment until the web app is automatically opened on your default browser
 6. To use the app, follow the demo guide that I provided for this.
+
+
+Version used
+Angular - v17
+Bootstrap - v5.3
