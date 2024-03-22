@@ -1,4 +1,5 @@
 import { Injectable, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { BehaviorSubject } from 'rxjs';
 
@@ -9,14 +10,21 @@ export class AuthorizationService {
   _isAuthenticate = new BehaviorSubject<boolean>(false);
   isAuthenticate$ = this._isAuthenticate.asObservable()
   _auth = inject(AuthService);
+  router = inject(Router)
   constructor() {
   }
 
+  /**
+   * Initialize authentication value
+   */
   initializeAuth() {
     this._auth.isAuthenticated$.subscribe(isAuth => {
       this._isAuthenticate.next(isAuth)
     });
   }
+  /**
+   * Getter if user is authenticated or not
+   */
   get isAuthenticated() {
     return this._isAuthenticate.value;
   }
@@ -24,9 +32,10 @@ export class AuthorizationService {
    * 0Auth Login Functionality
    */
   login() {
-    this._auth.loginWithPopup();
+    this._auth.loginWithRedirect();
+    
+    
   }
-
   /**
    * 0Auth Logout Functionality
    */
@@ -35,6 +44,7 @@ export class AuthorizationService {
       logoutParams: {
         returnTo: document.location.origin
       }
-    })
+    });
+    localStorage.clear();
   }
 }

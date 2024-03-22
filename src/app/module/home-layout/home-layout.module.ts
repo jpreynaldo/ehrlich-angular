@@ -1,24 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { PublicComponent } from './public.component';
-import { AuthGuard } from '../../core/auth.guard';
+import { HomeLayoutComponent } from './home-layout.component';
 
 
 const routes: Routes = [
-  { 
-    path: '', 
-    component: PublicComponent,
-  }
+  { path: '', component: HomeLayoutComponent, pathMatch: 'full' }
 ];
 
 @NgModule({
   declarations: [
-    PublicComponent
+    HomeLayoutComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes)
   ]
 })
-export class PublicModule { }
+export class HomeLayoutModule { }

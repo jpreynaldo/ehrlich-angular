@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
+import { AuthorizationService } from '../../shared/services/authorization.service';
 
 @Component({
   selector: 'app-public',
@@ -7,5 +8,10 @@ import { AuthService } from '@auth0/auth0-angular';
   styleUrl: './public.component.scss'
 })
 export class PublicComponent {
-  public auth = inject(AuthService);
+  public auth = inject(AuthorizationService);
+
+
+  login() {
+    this.auth.login();
+  }
 }
