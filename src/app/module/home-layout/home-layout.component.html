@@ -1,4 +1,4 @@
-<div *ngIf="!weatherData">
+<div>
     <app-home 
         *ngIf="auth.user$ | async as user"
         [user]="user"
@@ -9,7 +9,6 @@
 
 
 <app-weather
-    *ngIf="weatherData"
     [weather]="weatherData"
     (onBack)="goBack($event)"
 ></app-weather>

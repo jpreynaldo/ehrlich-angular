@@ -20,7 +20,12 @@ export class HomeLayoutComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.getUserDetail();
+    // this.getUserDetail();
+    const accessToken = localStorage.getItem('accessToken');
+
+    if (!accessToken) {
+      this._router.navigateByUrl('/');
+    }
   }
 
   getUserDetail() {
