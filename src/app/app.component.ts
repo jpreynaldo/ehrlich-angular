@@ -17,7 +17,6 @@ export class AppComponent implements OnInit {
     this.authService.initializeAuth();
     if (this.authService.isAuthenticated) {
       const accessToken = await this.authService.getAccessToken();
-      console.log(accessToken);
-    } 
+    }
   }
 }
