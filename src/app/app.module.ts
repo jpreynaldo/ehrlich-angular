@@ -5,8 +5,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
-import { AppRoutingModule } from "./app.routing.module";
 import { AuthModule, provideAuth0 } from "@auth0/auth0-angular";
+import { AppRoutingModule } from "./app-routing.module";
 
 
 @NgModule({

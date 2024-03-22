@@ -1,5 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { AuthorizationService } from './shared/services/authorization.service';
+import { AuthorizationService } from './core/services/authorization.service';
+import { AuthService } from '@auth0/auth0-angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +9,15 @@ import { AuthorizationService } from './shared/services/authorization.service';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-  public auth = inject(AuthorizationService);
+  public auth = inject(AuthService);
+  router = inject(Router)
+  public authService = inject(AuthorizationService);
 
-  ngOnInit() {
-    this.auth.initializeAuth();
+ async ngOnInit() {
+    this.authService.initializeAuth();
+    if (this.authService.isAuthenticated) {
+      const accessToken = await this.authService.getAccessToken();
+      console.log(accessToken);
+    } 
   }
 }
