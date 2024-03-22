@@ -5,7 +5,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
-import { AppRoutesModule } from "./app.routes";
+import { AppRoutingModule } from "./app.routing.module";
+import { AuthModule, provideAuth0 } from "@auth0/auth0-angular";
 
 
 @NgModule({
@@ -18,9 +19,17 @@ import { AppRoutesModule } from "./app.routes";
         FormsModule,
         HttpClientModule,
         RouterModule,
-        AppRoutesModule
+        AppRoutingModule,
+        AuthModule.forRoot({
+            domain: 'dev-bydc8rmdr55rv736.us.auth0.com',
+            clientId: 'yawX3nbrMed7pznOINbcQLnXEdAdMIBl',
+            authorizationParams: {
+                redirect_uri: window.location.origin
+            }
+        })
       ],
-    providers: [],
+    providers: [
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
